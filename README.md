@@ -5,5 +5,5 @@
 
 说明文档
 
-MySql数据库：数据库文件在data文件夹下
+MySql数据库：数据库文件在data文件夹下  
 PHP运行环境，初学者推荐使用PHPStudy或WampServer集成开发工具包
