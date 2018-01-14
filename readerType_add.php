@@ -1,8 +1,14 @@
-﻿<html>
+<?php
+include ("check_login.php"); 
+ if (!session_id()) session_start();?>
+<!DOCTYPE html>
+<html>
 <head>
-<title>添加读者类型信息</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<link href="CSS/style.css" rel="stylesheet">
+	<meta charset="utf-8"> 
+	<title>图书管理系统</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <script language="javascript">
 function check(form){
@@ -14,50 +20,32 @@ function check(form){
 	}	
 }
 </script>
-<body>
-<table width="290" height="175" border="0" align="center" cellpadding="0" cellspacing="0" background="Images/subBG.jpg">
-  <tr>
-    <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="3%" height="25">&nbsp;</td>
-        <td width="94%">&nbsp;</td>
-        <td width="3%">&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td><table width="100%" height="131"  border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td align="center"><form name="form1" method="post" action="readerType_ok.php">
-	<table height="100"  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-      <tr>
-        <td width="84" align="center">类型名称：</td>
-        <td width="191" height="39"><input name="name" type="text" size="28"></td>
-      </tr>
-      <tr>
-        <td width="84" align="center">可借数量：</td>
-        <td height="35"><input name="number" type="text" id="number">
-          (本)</td>
-      </tr>
-      <tr>
-        <td align="center">&nbsp;</td>
-        <td><input name="Submit" type="submit" class="btn_grey" value="保存" onClick="check(form1)">
-          &nbsp;
-          <input name="Submit2" type="reset" class="btn_grey" value="关闭" onClick="window.close();"></td>
-      </tr>
-    </table>
-	        </form></td>
-          </tr>
-        </table></td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
 
+<body style="margin-left:18%;margin-top:20px;height:50%;width:80%">
+	<form name="form1" method="post" action="readerType_ok.php" class="form-horizontal">
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">类型名称</label>
+		<div class="col-sm-10">
+			<input type="text" name="name" class="form-control" id="name" >
+		</div>
+	</div>
+
+		<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">可借数量</label>
+		<div class="col-sm-10">
+			<input type="text" name="number" class="form-control" id="number" >
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button name="Submit" type="submit" class="btn btn-primary" onClick="check(form1)" value="保存">保存</button>
+			<button name="Submit2" id="Submit2" type="button" class="btn btn-danger" value="关闭" onClick="history.back();">关闭</button>
+		</div>		
+	</div>
+
+
+
+
+ </form>
 </body>
 </html>

@@ -1,4 +1,5 @@
 ﻿<?php
+include ("check_login.php"); 
 include("conn/conn.php");
 $id=$_GET[id];
 $sql=mysql_query("delete from tb_reader where id='$id'");

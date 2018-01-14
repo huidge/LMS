@@ -1,107 +1,98 @@
-﻿<?php 
+<?php 
 include ("check_login.php"); 
-session_start();
-?>
+session_start();?>
+<!DOCTYPE html>
 <html>
 <head>
-<title>图书馆管理系统</title>
-<link href="CSS/style.css" rel="stylesheet">
+	<meta charset="utf-8"> 
+	<title>图书管理系统</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<script language="javascript">
-function history_back(){
-window.location.href="bookQuery.php";
-}
-</script>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
-  <tr>
-    <td>
-<!--
-	<?php include("navigation.php");?>
--->
-	</td>
-  </tr>
-	<td>
-	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
-  <tr>
-    <td height="510" align="center" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td height="22" valign="top" class="word_orange">当前位置：图书管理 &gt; 图书详细信息 &gt;&gt;&gt;</td>
-      </tr>
-      <tr>
-        <td align="center" valign="top"><table width="100%" height="493"  border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td align="center" valign="top">
-		<?php 
+<body style="margin-left:18%;margin-top:20px;height:50%;width:80%">
+	<?php 
         include("conn/conn.php");
         $sql=mysql_query("select book.barcode,book.id as bookid,book.bookname,bt.typename,book.author,book.translator,pb.pubname,book.price,book.page,bc.name from tb_bookinfo book join tb_booktype bt on book.typeid=bt.id join tb_publishing pb on book.ISBN=pb.ISBN join tb_bookcase bc on book.bookcase=bc.id where book.id=$_GET[id]");
 		$info=mysql_fetch_array($sql);
 		?>
-	<table width="600" height="432"  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-      <tr>
-        <td width="173" align="center">条&nbsp;形&nbsp;码：</td>
-        <td width="427" height="39">
-          <input name="barcode" type="text" id="barcode" value="<?php echo $info[barcode];?>"></td>
-      </tr>
-      <tr>
-        <td align="center">图书名称：</td>
-        <td height="39"><input name="bookName" type="text" id="bookName" value="<?php echo $info[bookname];?>" size="50"> 
-        * </td>
-      </tr>
-      <tr>
-        <td align="center">图书类型：</td>
-        <td>
-		<input type="text" value="<?php echo $info[typename];?>">
-         </td>
-      </tr>
-      <tr>
-        <td align="center">作&nbsp;&nbsp;者：</td>
-        <td><input name="author" type="text" id="author" value="<?php echo $info[author];?>" size="40"></td>
-      </tr>
-      <tr>
-        <td align="center">译&nbsp;&nbsp;者：</td>
-        <td><input name="translator" type="text" id="translator" value="<?php echo $info[translator];?>" size="40"></td>
-      </tr>
-      <tr>
-        <td align="center">出&nbsp;版&nbsp;社：</td>
-        <td>
-		<input name="isbn" type="text" class="wenbenkuang" value="<?php echo $info[pubname];?>">
-        </td>
-      </tr>
-      <tr>
-        <td align="center">价&nbsp;&nbsp;格：</td>
-        <td><input name="price" type="text" id="price" value="<?php echo $info[price];?>">
-        (元)</td>
-      </tr>
-      <tr>
-        <td align="center">页&nbsp;&nbsp;码：</td>
-        <td><input name="page" type="text" id="page" value="<?php echo $info[page];?>"></td>
-      </tr>
-      <tr>
-        <td align="center">书&nbsp;&nbsp;架：</td>
-        <td><input name="bookcaseid" class="wenbenkuang" value="<?php echo $info[name];?>">
-      </tr>
-      <tr>
-        <td colspan="2" align="center">
-			  <input name="Submit2" type="button" class="btn_grey" value="返回" onClick="history_back();"></td>
-        </tr>
-    </table>
-	</td>
-  </tr>
-</table></td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-<!--
-<?php include("copyright.php");?>
--->
-  </tr>
-</table>
-</td>
-  </tr>
-</table>
+<form name="form1" method="post" action="reader_ok.php" class="form-horizontal">
+	
+
+<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">条形码</label>
+		<div class="col-sm-10">
+			<input name="barcode" type="text" class="form-control" id="barcode"
+			value="<?php echo $info["barcode"];?>">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">图书名称</label>
+		<div class="col-sm-10">
+			<input name="bookName" type="text" class="form-control" id="bookName" 
+			value="<?php echo $info["bookname"];?>">
+		</div>
+	</div>
+
+	
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">图书类型</label>
+		<div class="col-sm-10">
+		<input name="typeId" class="form-control" id="typeId" value="<?php echo $info["typename"];?>">   
+        </div>     
+</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">作者</label>
+		<div class="col-sm-10">
+			<input name="author" type="text" class="form-control" id="author" value="<?php echo $info["author"];?>">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">译者</label>
+		<div class="col-sm-10">
+			<input name="translator" type="text" class="form-control" id="translator" 
+			value="<?php echo $info["translator"];?>">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">出版社</label>
+		<div class="col-sm-10">
+		<input name="isbn" class="form-control" id="isbn" value="<?php echo $info["pubname"];?>">	   
+        </div>     
+</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">价格</label>
+		<div class="col-sm-10">
+			<input name="price" type="text" class="form-control" id="price" value="<?php echo $info["price"];?>">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">页码</label>
+		<div class="col-sm-10">
+			<input name="page" type="text" class="form-control" id="page" value="<?php echo $info["page"];?>">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">书架</label>
+		<div class="col-sm-10">
+<input name="bookcaseid" type="text" class="form-control" id="bookcaseid" value="<?php echo $info["name"];?>">
+        </div>     
+</div>
+
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button name="Submit2" id="Submit2" type="button" class="btn btn-primary" value="返回" onClick="history.back()">返回</button>
+		</div>		
+	</div>
+</form>
+
 </body>
 </html>

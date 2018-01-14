@@ -1,4 +1,5 @@
 ﻿<?php
+include ("check_login.php"); 
 include("conn/conn.php");
 if($_POST[Submit]!=""){
 $name=$_POST[name];

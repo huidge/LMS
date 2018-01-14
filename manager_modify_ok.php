@@ -1,4 +1,5 @@
 ﻿<?php 
+include ("check_login.php"); 
 include("conn/conn.php");
 if($_POST[submit]!=""){
 $id=$_POST[id];
@@ -15,7 +16,7 @@ if($info==false){
 else{
 	mysql_query("update tb_purview set sysset=$sysset,readerset=$readerset,bookset=$bookset,borrowback=$borrowback,sysquery=$sysquery  where id='$id'");
 }
-	echo"<script language=javascript>alert('权限设置修改成功！');window.close();window.opener.location.reload();</script>";
+	echo"<script language=javascript>alert('权限设置修改成功！');window.location.href='manager.php';</script>";
 }
 ?>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">

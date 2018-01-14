@@ -1,25 +1,16 @@
-﻿<?php 
+<?php
 include ("check_login.php"); 
-//include("navigation.php");
-?>
+ if (!session_id()) session_start();?>
+<!DOCTYPE html>
 <html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <head>
-<title>图书馆管理系统</title>
-<link href="CSS/style.css" rel="stylesheet">
+	<meta charset="utf-8"> 
+	<title>图书管理系统</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
-  <tr>
-    <td>
-      <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
-  <tr>
-    <td height="510" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td height="22" valign="top" class="word_orange">当前位置：系统管理 &gt; 书架设置 &gt;&gt;&gt;</td>
-      </tr>
-      <tr>
-        <td align="center" valign="top">
+<body style="margin-left:18%;margin-top:20px;height:50%;width:80%">
 <?php
 include("conn/conn.php");       //连接数据源信息
 $sql=mysql_query("select * from tb_bookcase order by id desc");      //查询图书书架信息表中的数据信息
@@ -31,49 +22,36 @@ if($info==false){      //如果图书书架信息表中为空值，则弹出“�
               <td height="36" align="center">暂无书架信息！</td>
             </tr>
           </table>
-          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>
-      <a href="#" onClick="window.open('bookcase_add.jsp','','width=500,height=300,top=200,left=300')">添加书架信息</a> </td>
-  </tr>
-</table>
+       <div class="col-sm-offset-5 col-sm-10">
+<button name="Submit" type="submit" class="btn btn-primary" onClick="self.location.href='bookcase_add.php'">添加书架信息</button>
+</div>
  <?php
-}else{   //否则输出书架信息
-  ?>
- <table width="91%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="84%">&nbsp;      </td>
-<td width="16%" align="right">
-      <a href="#" onClick="window.open('bookcase_add.php','','width=500,height=300,top=200,left=300')">添加书架信息&nbsp;</a> </td>	  
-  </tr>
-</table>  
-  <table width="91%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#D2E3E6" bordercolorlight="#FFFFFF">
-  <tr align="center" bgcolor="#e3F4F7">
-    <td width="84%">书架名称</td>
-    <td width="16%">操作</td>
-  </tr>
-<?php
-	do{    //应用do...while循环语句输出图书书架信息
+}else{//否则输出书架信息
+?>   
+<table class="table table-hover">
+	<thead>
+		<tr align="center" bgcolor="#E6E6FA">
+    <td >书架名称</td>
+    <td>删除</td>
+		</tr>
+	</thead>
+	<tbody>
+
+<?php 
+do{
 ?> 
-  <tr>
-    <td style="padding:5px;"><?php echo $info[name];?></td>
-    <td align="center"><a href="bookcase_del.php?id=<?php echo $info[id];?>">删除</a></td>
+<tr>
+    <td><?php echo $info["name"];?></td>
+    <td align="center"><a class="btn btn-primary" href="bookcase_del.php?id=<?php echo $info["id"];?>">删除</a></td>
   </tr>
 <?php
   }while($info=mysql_fetch_array($sql));          //do...while循环语句结束
 }
 ?>  
-</table></td>
-      </tr>
-    </table>
-</td>
-  </tr>
+	</tbody>
 </table>
-<!--
-<?php include("copyright.php");?>
--->
-</td>
-  </tr>
-</table>
+    <div class="col-sm-offset-5 col-sm-10">
+<button name="Submit" type="submit" class="btn btn-primary" onClick="self.location.href='bookcase_add.php'">添加书架信息</button>
+</div>
 </body>
 </html>

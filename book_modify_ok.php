@@ -17,4 +17,4 @@ $inTime=date("Y-m-d");
 $query=mysql_query("update tb_bookinfo set barcode='$barcode', bookName='$bookName' , typeid='$typeid', author='$author', translator='$translator', ISBN='$isbn' , price='$price' , page='$page' , bookcase='$bookcase', inTime='$inTime', operator='$operator' where id=$bid");
 echo "<script language='javascript'>alert('图书信息修改成功!');history.back();</script>";
 ?>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">

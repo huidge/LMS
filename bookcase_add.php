@@ -1,46 +1,41 @@
-﻿<html>
+<?php
+include ("check_login.php"); 
+ if (!session_id()) session_start();?>
+<!DOCTYPE html>
+<html>
 <head>
-<title>添加书架信息</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<link href="CSS/style.css" rel="stylesheet">
+	<meta charset="utf-8"> 
+	<title>添加书架信息</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script language="javascript">
+function check(form){
+	if(form.name.value==""){
+		alert("请输入书架名!");form.barcode.focus();return false;
+	}
+}
+</script>
 </head>
-<body>
-<table width="292" height="175" border="0" align="center" cellpadding="0" cellspacing="0" background="Images/subBG.jpg">
-  <tr>
-    <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="3%" height="25">&nbsp;</td>
-        <td width="94%">&nbsp;</td>
-        <td width="3%">&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td><table width="100%" height="131"  border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td align="center" valign="top"><form name="form1" method="post" action="bookcase_add_ok.php">
-                <table width="100%" height="114"  border="0" cellpadding="0" cellspacing="0">
-                  <tr>
-                    <td height="74" align="center">书架名称：
-                      <input name="name" type="text"></td>
-                    </tr>
-                  <tr>
-                    <td align="center"><input name="submit1" type="submit" class="btn_grey" value="保存">
-                      &nbsp;
-                      <input name="submit2" type="button" class="btn_grey" value="关闭" onClick="window.close();"></td>
-                    </tr>
-                </table>
-            </form></td>
-          </tr>
-        </table></td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
+
+<body style="margin-left:18%;margin-top:20px;height:50%;width:80%">
+	<form name="form1" method="post" action="bookcase_add_ok.php" class="form-horizontal">
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">书架名称</label>
+		<div class="col-sm-10">
+			<input type="text" name="name" class="form-control" id="name" >
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button name="submit1" type="submit" class="btn btn-primary" onClick="check(form1)" value="保存">保存</button>
+			<button name="Submit2" id="Submit2" type="reset" class="btn btn-danger" value="取消" >取消</button>
+		</div>		
+	</div>
+
+
+
+
+ </form>
 </body>
 </html>

@@ -1,4 +1,5 @@
 ﻿<?php
+include ("check_login.php"); 
 session_start();
 $newpwd=$_POST[pwd];
 include("conn/conn.php");

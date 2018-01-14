@@ -1,10 +1,14 @@
-﻿<html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf8">
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<!Doctype html>
+<html lang="zh">
 <head>
-<title>图书管理系统</title>
-<link href="CSS/style.css" rel="stylesheet">
-<script language="javascript">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<title>图书管理系统-登录</title>
+	<link rel="stylesheet" type="text/css" href="login/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="login/css/default.css">
+	<link rel="stylesheet" type="text/css" href="login/css/styles.css">
+	<script language="javascript">
 function check(form){
 	if (form.name.value==""){
 		alert("请输入管理员名称!");form.name.focus();return false;
@@ -16,49 +20,53 @@ function check(form){
 </script>
 </head>
 <body>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<form name="form1" method="post" action="chklogin.php">
-  <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td width="30%" bgcolor="86C1E6">&nbsp;</td>
-      <td width="32%" background="Images/bg.gif"><table width="603" height="243"  border="0" align="center" cellpadding="0" cellspacing="0" bordercolorlight="#FFFFFF" bordercolordark="#D2E3E6">
-        <tr>
-          <td width="50%" height="100" align="center">&nbsp;</td>
-          <td width="50%">&nbsp;          </td>
-        </tr>
-        <tr>
-          <td height="30" align="center">管理员名称：
-            <input name="name" type="text" class="logininput" id="name3" size="25"></td>
-          <td height="30" valign="top">&nbsp;</td>
-        </tr>
-        <tr>
-          <td height="30" align="center">管理员密码：
-            <input name="pwd" type="password" class="logininput" id="pwd2" size="25"></td>
-          <td height="30" valign="top">&nbsp;</td>
-        </tr>
-        <tr>
-          <td height="30" align="center"><input name="submit" type="submit" class="btn_grey" value="确定" onClick="return check(form1)">
-&nbsp;
-<input name="submit3" type="reset" class="btn_grey" value="重置">
-&nbsp;
-<input name="submit2" type="button" class="btn_grey" value="关闭" onClick="window.close();"></td>
-          <td height="30" align="center" valign="top">&nbsp;</td>
-        </tr>
-        <tr>
-          <td height="53" colspan="2" align="center"></td>
-        </tr>
-      </table></td>
-      <td width="30%" bgcolor="86C1E6"><br></td>
-    </tr>
-  </table>
-  <div align="center"><br>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CopyRight© 2017- <?php echo date("Y")?> <a href="http://lib.guozhihui.top">http://lib.guozhihui.top</a> &nbsp;图书管理系统 </div>
-</form>
+	<div class="cont">
+	  <div class="demo">
+	    <div class="login">
+	          <img src="http://i.imgur.com/joyWJEY.jpg" alt="" class="app__user-photo" />
+	      <!--<div class="login__check"></div>-->
+	      <form name="myform" method="post" action="chklogin.php">
+	      <div class="login__form">
+	        <div class="login__row">
+	          <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+	            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+	          </svg>
+	          <input type="text" name="name" class="login__input name" placeholder="Username"/>
+	        </div>
+	        <div class="login__row">
+	          <svg class="login__icon pass svg-icon" viewBox="0 0 20 20">
+	            <path d="M0,20 20,20 20,8 0,8z M10,13 10,16z M4,8 a6,8 0 0,1 12,0" />
+	          </svg>
+	          <input type="password" name="pwd" class="login__input pass" placeholder="Password"/>
+	        </div>
+	        </form>
+	        <button type="submit" class="login__submit" onClick="return check(myform)">登 录</button>
+	    <!--
+	       	<p class="login__signup">还没有账号? &nbsp;<a href="http://www.htmleaf.com/jQuery/Layout-Interface/201506081995.html" target="_blank">立刻注册</a></p>
+	    -->
+	      </div>
+	    </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<script src='login/js/stopExecutionOnTimeout.js?t=1'></script>
+	<script src='login/js/jquery-1.11.0.min.js'></script>
+	<script>
+	$(document).ready(function () {
+	    var animating = false, submitPhase1 = 1100, submitPhase2 = 400, logoutPhase1 = 800, $login = $('.login'), $app = $('.app');
+	    function ripple(elem, e) {
+	        $('.ripple').remove();
+	        var elTop = elem.offset().top, elLeft = elem.offset().left, x = e.pageX - elLeft, y = e.pageY - elTop;
+	        var $ripple = $('<div class=\'ripple\'></div>');
+	        $ripple.css({
+	            top: y,
+	            left: x
+	        });
+	        elem.append($ripple);
+	    };
+	});
+
+	</script>
 </body>
 </html>

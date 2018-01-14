@@ -22,7 +22,7 @@ class chkinput{                //定义类
        }
       else{                              //如果管理员名称或密码正确，则弹出相关提示信息
           echo "<script>//alert('管理员登录成功!');
-          window.location='admin.html';</script>";
+          window.location='index.php';</script>";
 		 $_SESSION[admin_name]=$info[name];
 		 $_SESSION[pwd]=$info[pwd];
    }

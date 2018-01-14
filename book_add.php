@@ -1,12 +1,15 @@
-﻿<?php 
+<?php
 include ("check_login.php"); 
-session_start();
-?>
+ session_start();?>
+<!DOCTYPE html>
 <html>
 <head>
-<title>图书馆管理系统</title>
-<link href="CSS/style.css" rel="stylesheet">
-</head>
+	<meta charset="utf-8"> 
+	<title>图书管理系统</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script language="javascript">
 function check(form){
 	if(form.barcode.value==""){
@@ -21,118 +24,118 @@ function check(form){
 form.submit();
 }
 </script>
-<body>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
-  <tr>
-    <td>
-<!--
-	<?php include("navigation.php");?>
--->
-	</td>
-  </tr>
-	<td>
-	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-	  <tr>
-		<table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
-	  <tr>
-		<td height="510" align="center" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
-		  <tr>
-			<td height="22" valign="top" class="word_orange">当前位置：图书管理 &gt; 添加图书信息 &gt;&gt;&gt;</td>
-		  </tr>
-		  <tr>
-			<td align="center" valign="top"><table width="100%" height="493"  border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-    <td align="center" valign="top">
-	<form name="form1" method="post" action="book_ok.php">
-	<table width="600" height="432"  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
-      <tr>
-        <td width="173" align="center">条&nbsp;形&nbsp;码：</td>
-        <td width="427" height="39">
-          <input name="barcode" type="text" id="barcode"></td>
-      </tr>
-      <tr>
-        <td align="center">图书名称：</td>
-        <td height="39"><input name="bookName" type="text" id="bookName" size="50"> * </td>
-      </tr>
-      <tr>
-        <td align="center">图书类型：</td>
-        <td>
-		<select name="typeId" class="wenbenkuang" id="typeId">
-		<?php 
-        include("Conn/conn.php");
-		$sql=mysql_query("select * from tb_booktype");
-		$info=mysql_fetch_array($sql);
-		do{
-		?> 		
-        <option value="<?php echo $info[id];?>"><?php echo $info[typename];?></option>
-		<?php }while($info=mysql_fetch_array($sql));?> 
-        </select>
-		</td>
-      </tr>
-      <tr>
-        <td align="center">作&nbsp;&nbsp;者：</td>
-        <td><input name="author" type="text" id="author" size="40"></td>
-      </tr>
-      <tr>
-        <td align="center">译&nbsp;&nbsp;者：</td>
-        <td><input name="translator" type="text" id="translator" size="40"></td>
-      </tr>
-      <tr>
-        <td align="center">出&nbsp;版&nbsp;社：</td>
-        <td>
-		<select name="isbn" class="wenbenkuang">
-		<?php
-		$sql2=mysql_query("select * from tb_publishing");
-		$info2=mysql_fetch_array($sql2);
-		do{
-		?> 		
-        <option value="<?php echo $info2[ISBN];?>"><?php echo $info2[pubname];?></option>
-		<?php }while($info2=mysql_fetch_array($sql2));?> 
-        </select>
-		</td>
-      </tr>
-      <tr>
-        <td align="center">价&nbsp;&nbsp;格：</td>
-        <td><input name="price" type="text" id="price">(元)</td>
-      </tr>
-      <tr>
-        <td align="center">页&nbsp;&nbsp;码：</td>
-        <td><input name="page" type="text" id="page"></td>
-      </tr>
-      <tr>
-        <td align="center">书&nbsp;&nbsp;架：</td>
-        <td><select name="bookcaseid" class="wenbenkuang" id="bookcaseid">
-		<?php
-		$sql3=mysql_query("select * from tb_bookcase");
-		$info3=mysql_fetch_array($sql3);
-		do{
-		?> 		
-          <option value="<?php echo $info3[id];?>"><?php echo $info3[name];?></option>
-			<?php }while($info3=mysql_fetch_array($sql3));?> 
-        </select>
-          <input name="operator" type="hidden" id="operator" value="<?php echo $info3[name];?>"></td>
-      </tr>
-      <tr>
-        <td align="center">&nbsp;</td>
-        <td><input name="Submit" type="submit" class="btn_grey" value="保存" onClick="return check(form1)">&nbsp;
-			<input name="Submit2" type="button" class="btn_grey" value="返回" onClick="history.back();"></td>
-      </tr>
-    </table>
-	</form>
-	</td>
-  </tr>
-</table></td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-<!--
-<?php include("copyright.php");?>
--->
-  </tr>
-</table>
-</td>
-  </tr>
-</table>
+</head>
+<body style="margin-left:10%;margin-top:20px;height:50%;width:80%">
+<form name="form1" method="post" action="book_ok.php" class="form-horizontal">
+	
+
+<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">条形码</label>
+		<div class="col-sm-10">
+			<input name="barcode" type="text" class="form-control" id="barcode">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">图书名称</label>
+		<div class="col-sm-10">
+			<input name="bookName" type="text" class="form-control" id="bookName">
+		</div>
+	</div>
+
+	
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">图书类型</label>
+		<div class="col-sm-10">
+		<select name="typeId" class="form-control" id="typeId">
+<?php
+  include("conn/conn.php");
+  $sql=mysql_query("select * from tb_booktype");
+  $info=mysql_fetch_array($sql);
+  do{
+?> 		
+				
+          <option value="<?php echo $info["id"];?>"><?php echo $info["typename"];?></option>
+<?php
+}while($info=mysql_fetch_array($sql));
+?> 
+        </select>   
+        </div>     
+</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">作者</label>
+		<div class="col-sm-10">
+			<input name="author" type="text" class="form-control" id="author">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">译者</label>
+		<div class="col-sm-10">
+			<input name="translator" type="text" class="form-control" id="translator">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">出版社</label>
+		<div class="col-sm-10">
+		<select name="isbn" class="form-control" id="isbn">
+<?php
+  $sql2=mysql_query("select * from tb_publishing");
+  $info2=mysql_fetch_array($sql2);
+  do{
+?> 		
+				
+          <option value="<?php echo $info2["ISBN"];?>"><?php echo $info2["pubname"];?></option>
+<?php
+}while($info2=mysql_fetch_array($sql2));
+?> 
+        </select>   
+        </div>     
+</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">价格</label>
+		<div class="col-sm-10">
+			<input name="price" type="text" class="form-control" id="price">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">页码</label>
+		<div class="col-sm-10">
+			<input name="page" type="text" class="form-control" id="page">
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">书架</label>
+		<div class="col-sm-10">
+		<select name="bookcaseid" class="form-control" id="bookcaseid">
+<?php
+  $sql3=mysql_query("select * from tb_bookcase");
+  $info3=mysql_fetch_array($sql3);
+  do{
+?> 		
+				
+          <option value="<?php echo $info3["id"];?>"><?php echo $info3["name"];?></option>
+<?php
+}while($info3=mysql_fetch_array($sql3));
+?> 
+        </select>   
+                  <input name="operator" type="hidden" id="operator" value="<?php echo $info3["name"];?>">
+        </div>     
+</div>
+
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button name="Submit" type="submit" class="btn btn-primary" onClick="return check(form1)" value="保存">保存</button>
+			<button name="Submit2" id="Submit2" type="button" class="btn btn-danger" value="返回" onClick="history.back()">返回</button>
+		</div>		
+	</div>
+</form>
+
 </body>
 </html>

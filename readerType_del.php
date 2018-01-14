@@ -1,4 +1,7 @@
-﻿<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+﻿<?php 
+include ("check_login.php"); 
+?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <?php
 include("conn/conn.php");
 $id=$_GET[id];

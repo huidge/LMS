@@ -1,4 +1,5 @@
 ﻿<?php
+include ("check_login.php"); 
 session_start();
 include("conn/conn.php");
 $backTime=date("Y-m-d");        //归还图书日期

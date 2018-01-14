@@ -1,4 +1,5 @@
 ﻿<?php 
+include ("check_login.php"); 
 include("conn/conn.php");
 if($_POST[Submit]!=""){
 $cost=$_POST[cost];
@@ -11,4 +12,4 @@ if($sql==true){
 }
 }
 ?>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">

@@ -1,30 +1,16 @@
-﻿<?php 
+<?php
 include ("check_login.php"); 
-session_start();?>
+ if (!session_id()) session_start();?>
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<link href="CSS/style.css" rel="stylesheet">
+	<meta charset="utf-8"> 
+	<title>图书管理系统</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
-  <tr>
-    <td>
-<!--
-  <?php include("navigation.php");?>
--->
-	</td>
-	</tr>
-	<td>
-	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
-  <tr>
-    <td height="510" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td height="22" valign="top" class="word_orange">当前位置：系统管理 &gt; 管理员设置 &gt;&gt;&gt;</td>
-      </tr>
-      <tr>
-        <td align="center" valign="top">
+<body style="margin-left:18%;margin-top:20px;height:50%;width:80%">
 <?php
 include("conn/conn.php");
 $sql=mysql_query("select m.id,m.name,p.sysset,p.readerset,p.bookset,p.borrowback,p.sysquery from tb_manager as m left join (select * from tb_purview)as p on m.id=p.id");
@@ -36,60 +22,48 @@ if($info==false){
               <td height="36" align="center">暂无管理员信息！</td>
             </tr>
           </table>
-          <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td>
-      <a href="#" onClick="window.open('manager_add.php','','width=500,height=300,top=200,left=300')">添加管理员信息</a> </td>
-  </tr>
-</table>
+<div class="col-sm-offset-5 col-sm-10">
+<button name="Submit" type="submit" class="btn btn-primary" onClick="self.location.href='manager_add.php'">添加管理员信息</button>
+</div>
  <?php
 }else{
  ?>
- <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="84%">&nbsp;      </td>
-<td width="16%">
-      <a href="#" onClick="window.open('manager_add.php','','width=500,height=300,top=200,left=300')">添加管理员信息</a> </td>	  
-  </tr>
-</table>  
-  <table width="91%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#D2E3E6" bordercolorlight="#FFFFFF">
-  <tr align="center" bgcolor="#e3F4F7">
-    <td width="26%">管理员名称</td>
-    <td width="12%">系统设置</td>
-    <td width="12%">读者管理</td>
-    <td width="12%">图书档案管理</td>
-    <td width="11%">图书借还</td>
-    <td width="11%">系统查询</td>
-    <td width="8%">权限设置</td>
-    <td width="8%">操作</td>
-  </tr>
+
+<table class="table table-hover">
+	<thead>
+		<tr  bgcolor="#E6E6FA">
+			<th>管理员名称</th>
+			<th>系统设置</th>
+			<th>读者管理</th>
+			<th>图书档案管理</th>
+			<th>图书借还</th>
+			<th>系统查询</th>
+			<th>权限设置</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody>
+
 <?php do{?> 
   <tr>
-    <td style="padding:5px;"><?php echo $info[name];?></td>
-    <td align="center"><input name="checkbox" type="checkbox" class="noborder" value="checkbox" disabled="disabled" <?php if($info[sysset]==1){echo ("checked");}?>></td>
-    <td align="center"><input name="checkbox" type="checkbox" class="noborder" value="checkbox" disabled="disabled" <?php if($info[readerset]==1){echo("checked");}?>></td>
-    <td align="center"><input name="checkbox" type="checkbox" class="noborder" value="checkbox" disabled <?php if($info[bookset]==1){echo("checked");}?>></td>
-    <td align="center"><input name="checkbox" type="checkbox" class="noborder" value="checkbox" disabled <?php if($info[borrowback]==1){echo("checked");}?>></td>
-    <td align="center"><input name="checkbox" type="checkbox" class="noborder" value="checkbox" disabled <?php if($info[sysquery]==1){echo("checked");}?>></td>
-    <td align="center"><a href="#" onClick="window.open('manager_modify.php?id=<?php echo $info[id]; ?>','','width=500,height=300,top=200,left=300')">权限设置</a></td>
-    <td align="center"><a href="manager_del.php?id=<?php echo $info[id];?>">删除</a></td>
+    <td><?php echo $info["name"];?></td>
+    <td ><input class="noborder" name="checkbox" type="checkbox"  value="checkbox" disabled="disabled" <?php if($info["sysset"]==1){echo ("checked");}?>></td>
+    <td ><input name="checkbox" type="checkbox"  value="checkbox" disabled="disabled" <?php if($info["readerset"]==1){echo("checked");}?>></td>
+    <td ><input name="checkbox" type="checkbox"  value="checkbox" disabled <?php if($info["bookset"]==1){echo("checked");}?>></td>
+    <td ><input name="checkbox" type="checkbox"  value="checkbox" disabled <?php if($info["borrowback"]==1){echo("checked");}?>></td>
+    <td ><input name="checkbox" type="checkbox"  value="checkbox" disabled <?php if($info["sysquery"]==1){echo("checked");}?>></td>
+    <td ><a class="btn btn-primary" href="#" onClick="self.location.href='manager_modify.php?id=<?php echo $info["id"]; ?>'">权限设置</a></td>
+    <td ><a class="btn btn-primary" href="manager_del.php?id=<?php echo $info["id"];?>">删除</a></td>
   </tr>
 <?php
   }while($info=mysql_fetch_array($sql));
 }
 ?>  
-</table></td>
-      </tr>
-    </table>
-</td>
-  </tr>
+	</tbody>
 </table>
-<!--
-<?php include("copyright.php");?>
--->
-  </tr>
-</table>
-</td>
-  </tr>
-</table>
+
+    <div class="col-sm-offset-5 col-sm-10">
+<button name="Submit" type="submit" class="btn btn-primary" onClick="self.location.href='manager_add.php'">添加管理员信息</button>
+</div>     
 </body>
+</html>

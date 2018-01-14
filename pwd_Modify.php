@@ -1,11 +1,18 @@
-﻿<?php 
+<?php
 include ("check_login.php"); 
-session_start();?>
+ session_start();
+include("conn/conn.php");
+$sql=mysql_query("select * from tb_library");
+$info=mysql_fetch_array($sql);
+?>
+<!DOCTYPE html>
 <html>
 <head>
-<title>图书馆管理系统</title>
-<link href="CSS/style.css" rel="stylesheet">
-</head>
+	<meta charset="utf-8"> 
+	<title>图书管理系统</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script language="javascript">
 function checkForm(form){
 	if(form.oldpwd.value==""){
@@ -27,75 +34,49 @@ function checkForm(form){
 		form.pwd.focus();return false;
 	}
 }
+}
 </script>
-<body>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
-  <tr>
-    <td>
-<!--
-  <?php include("navigation.php");?>
--->
-	</td>
-	</tr>
-	<td>
-	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
-  <tr>
-    <td height="510" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td height="22" valign="top" class="word_orange">当前位置：更改口令 &gt;&gt;&gt;</td>
-      </tr>
-      <tr>
-        <td align="center" valign="top">
- <table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td width="84%">&nbsp;      </td>
-</tr>
-</table>  <form name="form1" method="post" action="pwd_ok.php">
-  <table width="47%"  border="0" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#D2E3E6" bordercolorlight="#FFFFFF">
+</head>
+<body style="margin-left:18%;margin-top:20px;height:50%;width:80%">
 <?php
 include("Conn/conn.php");
 $query3=mysql_query("select pwd from tb_manager where name='$_SESSION[admin_name]'");
 $info3=mysql_fetch_array($query3);
 ?>
-  <tr align="center">
-    <td width="27%" align="left" style="padding:5px;">管理员名称：</td>
-    <td width="73%" align="left">
-      <input name="name" type="text" id="name" value="<?php echo $_SESSION[admin_name];?>" readonly="yes" size="30">    </td>
-    <tr>
-    <td align="left" style="padding:5px;">原密码：</td>
-    <td align="left"><input name="oldpwd" type="password" id="oldpwd" size="30">
-      <input name="holdpwd" type="hidden" id="holdpwd" value="<?php echo $info3[pwd];?>"></td>
-    </tr>
-    <tr>
-      <td align="left" style="padding:5px;">新密码：</td>
-      <td align="left"><input name="pwd" type="password" id="pwd" size="30"></td>
-    </tr>
-    <tr>
-      <td align="left" style="padding:5px;">确认新密码：</td>
-      <td align="left"><input name="pwd1" type="password" id="pwd1" size="30"></td>
-    </tr>
-    <tr>
-      <td height="65" align="left" style="padding:5px;">&nbsp;</td>
-      <td><input name="Submit" type="submit" class="btn_grey" value="保存" onClick="return checkForm(form1)">
-        &nbsp;
-        <input name="Submit2" type="reset" class="btn_grey" value="取消"></td>
-    </tr>
-</table>
-</form></td>
-      </tr>
-    </table>
-</td>
-  </tr>
-</table>
-<!--
-<?php include("copyright.php");?>
--->
-  </tr>
-</table>
-</td>
-  </tr>
-</table>
+<form name="form1" method="post" action="library_ok.php" class="form-horizontal">
+	<div class="form-group">
+		<label for="firstname" class="col-sm-2 control-label">管理员名称：</label>
+		<div class="col-sm-10">
+			<input name="name" type="text" class="form-control" id="name" value="<?php echo $_SESSION["admin_name"];?>" readonly="yes">
+		</div> 
+	</div>
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">原密码：</label>
+		<div class="col-sm-10">
+			<input name="oldpwd" type="password" id="oldpwd" size="30" class="form-control">
+			<input type="hidden" name="holdpwd" class="form-control" id="holdpwd" 
+				   value="<?php echo $info3["pwd"];?>">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">新密码：</label>
+		<div class="col-sm-10">
+			<input name="pwd" type="password" class="form-control" id="pwd" >
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">确认新密码：</label>
+		<div class="col-sm-10">
+			<input name="pwd1" type="password" class="form-control" id="pwd1" >
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button name="Submit" type="submit" class="btn btn-primary" onClick="return checkForm(form1)" value="保存">保存</button>
+			<button name="Submit2" id="Submit2" type="reset" class="btn btn-danger" value="取消">取消</button>
+		</div>		
+	</div>
+</form>
+
 </body>
 </html>

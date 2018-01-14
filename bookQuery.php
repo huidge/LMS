@@ -1,43 +1,23 @@
-﻿<?php 
+<?php
 include ("check_login.php"); 
-session_start();?>
+ if (!session_id()) session_start();?>
+<!DOCTYPE html>
 <html>
 <head>
-<title>图书馆管理系统</title>
-<link href="CSS/style.css" rel="stylesheet">
+	<meta charset="utf-8"> 
+	<title>图书管理系统</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
+<body style="margin-left:18%;margin-top:20px;height:50%;width:80%">
+          <form class="form-inline" name="form1" method="post" action="">
+          <table bordercolor="#FFFFFF" bgcolor="#9ECFEE">
   <tr>
-    <td>
-<!--
-  <?php include("navigation.php");?>
--->
-	</td>
-	</tr>
-	<td>
-	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
-  <tr>
-    <td height="510" align="center" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td height="22" valign="top" class="word_orange"> &nbsp;&nbsp;当前位置：系统查询 &gt; 图书档案查询&gt;&gt;&gt; </td>
-      </tr>
-      <tr>
-        <td align="center" valign="top">
-	      <table width="723" height="37" border="0" cellpadding="0" cellspacing="0">
-            <tr>
-              <td background="Images/dangan.gif">&nbsp;</td>
-            </tr>
-          </table>
-	      <form  name="form1" method="post" action="">
-	        <table width="98%" height="38"  border="1" cellpadding="1" cellspacing="0" bordercolor="#FFFFFF" bgcolor="#9ECFEE" class="tableBorder_gray">
-  <tr>
-    <td align="center">
-&nbsp;<img src="Images/search.gif" width="37" height="29"></td>
+    <td >
+&nbsp;</td>
     <td>&nbsp;&nbsp;请选择查询依据：
-      <select name="f" class="wenbenkuang" id="f">
+      <select name="f" class="form-control" id="f" width="37">
         <option value="<?php echo "b.barcode";?>">条形码</option>
         <option value="<?php echo "t.typename";?>">类别</option>
         <option value="<?php echo "b.bookname";?>" selected>书名</option>
@@ -45,61 +25,68 @@ session_start();?>
         <option value="<?php echo "p.pubname";?>">出版社</option>
         <option value="<?php echo "c.name";?>">书架</option>
                   </select>
-      <input name="key1" type="text" id="key1" size="50">
-      <input name="Submit" type="submit" class="btn_grey" value="查询"></td>
+<div class="form-group">
+    <label class="sr-only" for="name"></label>
+    <input name= "key1" type="text" class="form-control" id="key1">
+  </div>
+  <button type="submit" class="btn btn-primary" value="查询">查询</button>
+    </td>
   </tr>
 </table>
 </form>
-<?php 
-include("conn/conn.php");
-$query=mysql_query("select b.*,c.name as bookcasename,p.pubname,t.typename from tb_bookinfo b left join tb_bookcase c on b.bookcase=c.id join tb_publishing p on b.ISBN=p.ISBN join tb_booktype t on b.typeid=t.id");
-$result=mysql_fetch_array($query);
-if($result==false){
-?>
+<?php
+    include("Conn/conn.php");
+    $query=mysql_query("select b.*,c.name as bookcasename,p.pubname,t.typename from tb_bookinfo b left join tb_bookcase c on b.bookcase=c.id join tb_publishing p on b.ISBN=p.ISBN join tb_booktype t on b.typeid=t.id");
+    $result=mysql_fetch_array($query);
+        if($result==false){
+    ?> 
           <table width="100%" height="30"  border="0" cellpadding="0" cellspacing="0">
             <tr>
               <td height="36" align="center">暂无图书信息！</td>
             </tr>
           </table>
+ <?php
+}else{
+?>   
+<table class="table table-hover">
+	<thead>
+		<tr  bgcolor="#E6E6FA">
+			<th >条形码</th>
+			<th >图书名称</th>
+			<th >图书类型</th>
+			<th >出版社</th>
+			<th >书架</th>
+		</tr>
+	</thead>
+	<tbody>
+
 <?php
- }
- else{
- ?>		  
-  <table width="98%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#D2E3E6" bordercolorlight="#FFFFFF">
-  <tr align="center" bgcolor="#D0E9F8">
-    <td width="13%">条形码</td>  
-    <td width="26%">图书名称</td>
-    <td width="15%">图书类型</td>
-    <td width="14%">出版社</td>
-    <td width="12%">书架</td>
-  </tr>
-<?php
-if($_POST[key1]==""){
+if($_POST["key1"]==""){
 do{
 ?>
   <tr>
-    <td style="padding:5px;">&nbsp;<?php echo $result[barcode];?></td>  
-    <td style="padding:5px;"><a href="book_look.php?id=<?php echo $result[id]; ?>"><?php echo $result[bookname];?></a></td>
-    <td style="padding:5px;">&nbsp;<?php echo $result[typename];?></td>  
-    <td style="padding:5px;">&nbsp;<?php echo $result[pubname];?></td>  
-    <td style="padding:5px;">&nbsp;<?php echo $result[bookcasename];?></td>  
+    <td>&nbsp;<?php echo $result["barcode"];?></td>  
+    <td><a href="book_look.php?id=<?php echo $result["id"]; ?>"><?php echo $result["bookname"];?></a></td>
+    <td>&nbsp;<?php echo $result["typename"];?></td>  
+    <td>&nbsp;<?php echo $result["pubname"];?></td>  
+    <td>&nbsp;<?php echo $result["bookcasename"];?></td>  
     </tr>
 <?php
-	}while($result=mysql_fetch_array($query));
+  }while($result=mysql_fetch_array($query));
 }else{
-$f=$_POST[f];
-$key1=$_POST[key1];
+$f=$_POST["f"];
+$key1=$_POST["key1"];
 $sql=mysql_query("select b.*,c.name as bookcasename,p.pubname,t.typename from tb_bookinfo b left join tb_bookcase c on b.bookcase=c.id join tb_publishing p on b.ISBN=p.ISBN join tb_booktype t on b.typeid=t.id where $f like '%$key1%'");
 $info=mysql_fetch_array($sql);
 if($info==true){
 do{
 ?>
   <tr>
-    <td style="padding:5px;">&nbsp;<?php echo $info[barcode]; ?></td>  
-    <td style="padding:5px;"><a href="book_look.php?id=<?php echo $info[id]; ?>"><?php echo $info[bookname]; ?></a></td>
-    <td style="padding:5px;">&nbsp;<?php echo $info[typename]; ?></td>  
-    <td style="padding:5px;">&nbsp;<?php echo $info[pubname]; ?></td>  
-    <td style="padding:5px;">&nbsp;<?php echo $info[bookcasename]; ?></td>  
+    <td >&nbsp;<?php echo $info["barcode"]; ?></td>  
+    <td ><a href="book_look.php?id=<?php echo $info["id"]; ?>"><?php echo $info["bookname"]; ?></a></td>
+    <td>&nbsp;<?php echo $info["typename"]; ?></td>  
+    <td>&nbsp;<?php echo $info["pubname"]; ?></td>  
+    <td>&nbsp;<?php echo $info["bookcasename"]; ?></td>  
     </tr>
 <?php
 }while($info=mysql_fetch_array($sql));
@@ -115,18 +102,7 @@ do{
 }
 }
 ?>  
-</table></td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
-<!--
-<?php include("copyright.php");?>
--->
-  </tr>
-</table>
-</td>
-  </tr>
+	</tbody>
 </table>
 </body>
 </html>

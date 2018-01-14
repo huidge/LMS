@@ -1,9 +1,14 @@
-﻿<html>
+<?php
+include ("check_login.php");
+ if (!session_id()) session_start();?>
+<!DOCTYPE html>
+<html>
 <head>
-<title>添加管理员信息</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<link href="CSS/style.css" rel="stylesheet">
-</head>
+	<meta charset="utf-8"> 
+	<title>图书管理系统</title>
+	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script language="javascript">
 function check(form1){
 	if(form1.name.value==""){
@@ -20,53 +25,38 @@ function check(form1){
 	}
 }
 </script>
-<body>
-<table width="292" height="175" border="0" align="center" cellpadding="0" cellspacing="0" background="Images/subBG.jpg">
-  <tr>
-    <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="3%" height="25">&nbsp;</td>
-        <td width="94%">&nbsp;</td>
-        <td width="3%">&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td><table width="100%" height="131"  border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td align="center" valign="top">	<form name="form1" method="post" action="manager_ok.php">
-	<table height="123"  border="0" cellpadding="0" cellspacing="0">
-      <tr>
-        <td width="97" height="30" align="center">管理员名称：</td>
-        <td width="178">
-          <input name="name" type="text">        </td>
-      </tr>
-      <tr>
-        <td height="28" align="center">管理员密码：</td>
-        <td><input name="pwd" type="password" id="pwd"></td>
-      </tr>
-      <tr>
-        <td height="28" align="center">确认密码：</td>
-        <td><input name="pwd1" type="password" id="pwd1"></td>
-      </tr>
-      <tr>
-        <td height="37" align="center">&nbsp;</td>
-        <td><input name="submit" type="submit" class="btn_grey" value="保存" onClick="check(form1)">
-&nbsp;
-<input name="submit2" type="button" class="btn_grey" value="关闭" onClick="window.close();"></td>
-      </tr>
-    </table>
-	</form></td>
-          </tr>
-        </table></td>
-        <td>&nbsp;</td>
-      </tr>
-      <tr>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-        <td>&nbsp;</td>
-      </tr>
-    </table></td>
-  </tr>
-</table>
+</head>
+
+<body style="margin-left:18%;margin-top:20px;height:50%;width:80%">
+	<form name="form1" method="post" action="manager_ok.php" class="form-horizontal">
+	<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">管理员名称</label>
+		<div class="col-sm-10">
+			<input type="text" name="name" class="form-control" id="name" >
+		</div>
+	</div>
+		<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">管理员密码</label>
+		<div class="col-sm-10">
+			<input type="text" name="pwd" class="form-control" id="pwd" >
+		</div>
+	</div>
+		<div class="form-group">
+		<label for="lastname" class="col-sm-2 control-label">确认密码</label>
+		<div class="col-sm-10">
+			<input type="text" name="pwd1" class="form-control" id="pwd1" >
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button name="submit" type="submit" class="btn btn-primary" onClick="check(form1)" value="保存">保存</button>
+			<button name="Submit2" id="Submit2" type="button" class="btn btn-danger" value="关闭" onClick="history.back();">关闭</button>
+		</div>		
+	</div>
+
+
+
+
+ </form>
 </body>
 </html>
