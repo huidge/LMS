@@ -11,9 +11,9 @@ $createDate=$_POST[createDate];
 $introduce=$_POST[introduce];
 $query=mysql_query("update tb_library set libraryname='$libraryname',curator='$curator',tel='$tel',address='$address',email='$email',url='$url',createDate='$createDate',introduce='$introduce'");
 if($query==true){
-	echo "<script language=javascript>alert('博考图书馆信息修改成功！');history.back();</script>";
+	echo "<script language=javascript>alert('信息修改成功！');history.back();</script>";
 }else{
-	echo "<script language=javascript>alert('博考图书馆信息修改失败！');history.back();</script>";
+	echo "<script language=javascript>alert('信息修改失败！');history.back();</script>";
 }
 }
 ?>

@@ -2,7 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <head>
-<title>学校图书馆管理系统</title>
+<title>图书管理系统</title>
 <link href="CSS/style.css" rel="stylesheet">
 <script language="javascript">
 function check(form){

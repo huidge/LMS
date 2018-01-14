@@ -1,4 +1,6 @@
-﻿<?php session_start();?>
+﻿<?php 
+include ("check_login.php"); 
+session_start();?>
 <html>
 <head>
 <link href="CSS/style.css" rel="stylesheet">
@@ -25,12 +27,14 @@
 		</script>
 </head>
 <body>
-<?php include("navigation.php");?>
+<!--
+  <?php include("navigation.php");?>
+-->
 <table width="776"  border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
     <td valign="top" bgcolor="#FFFFFF"><table width="100%" height="509"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
   <tr>
-    <td align="left" valign="top" style="padding:5px;"> &nbsp; <span class="word_orange">&nbsp;当前位置：图书借还 &gt; 图书借阅&gt;&gt;&gt; </span>      <table width="100%"  border="0" cellpadding="0" cellspacing="0">
+    <td align="left" valign="top" style="padding:5px;"> &nbsp; <span class="word_orange">&nbsp;当前位置：借阅管理 &gt; 图书借阅&gt;&gt;&gt; </span>      <table width="100%"  border="0" cellpadding="0" cellspacing="0">
 	<?php
 		include("conn/conn.php");
 		//$barcode=$_POST[barcode];
@@ -172,7 +176,10 @@ else{
     </table></td>
   </tr>
 </table>
-    <?php include("copyright.php");?></td>
+<!--
+<?php include("copyright.php");?>
+-->
+  </td>
   </tr>
 </table>
 </body>

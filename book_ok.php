@@ -1,4 +1,5 @@
 ﻿<?php 
+include ("check_login.php"); 
 session_start();
 include("Conn/conn.php");
 

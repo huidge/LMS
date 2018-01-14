@@ -5,7 +5,7 @@
 <link href="CSS/style.css" rel="stylesheet">
 </head>
 <body>
-<table width="292" height="175" border="0" cellpadding="0" cellspacing="0" background="Images/subBG.jpg">
+<table width="292" height="175" border="0" align="center" cellpadding="0" cellspacing="0" background="Images/subBG.jpg">
   <tr>
     <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>

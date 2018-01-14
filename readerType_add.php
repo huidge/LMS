@@ -15,7 +15,7 @@ function check(form){
 }
 </script>
 <body>
-<table width="292" height="175" border="0" cellpadding="0" cellspacing="0" background="Images/subBG.jpg">
+<table width="290" height="175" border="0" align="center" cellpadding="0" cellspacing="0" background="Images/subBG.jpg">
   <tr>
     <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
@@ -42,7 +42,7 @@ function check(form){
         <td align="center">&nbsp;</td>
         <td><input name="Submit" type="submit" class="btn_grey" value="保存" onClick="check(form1)">
           &nbsp;
-          <input name="Submit2" type="button" class="btn_grey" value="关闭" onClick="window.close();"></td>
+          <input name="Submit2" type="reset" class="btn_grey" value="关闭" onClick="window.close();"></td>
       </tr>
     </table>
 	        </form></td>

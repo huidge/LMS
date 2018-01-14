@@ -1,4 +1,7 @@
-﻿<?php include("navigation.php");?>
+﻿<?php 
+include ("check_login.php"); 
+//include("navigation.php");
+?>
 <html>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <head>
@@ -6,13 +9,14 @@
 <link href="CSS/style.css" rel="stylesheet">
 </head>
 <body>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder">
+<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
   <tr>
-    <td valign="top" bgcolor="#FFFFFF"><table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
+    <td>
+      <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
   <tr>
     <td height="510" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td height="22" valign="top" class="word_orange">当前位置：系统设置 &gt; 书架设置 &gt;&gt;&gt;</td>
+        <td height="22" valign="top" class="word_orange">当前位置：系统管理 &gt; 书架设置 &gt;&gt;&gt;</td>
       </tr>
       <tr>
         <td align="center" valign="top">
@@ -30,7 +34,7 @@ if($info==false){      //如果图书书架信息表中为空值，则弹出“�
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>
-      <a href="#" onClick="window.open('bookcase_add.jsp','','width=292,height=175')">添加书架信息</a> </td>
+      <a href="#" onClick="window.open('bookcase_add.jsp','','width=500,height=300,top=200,left=300')">添加书架信息</a> </td>
   </tr>
 </table>
  <?php
@@ -40,7 +44,7 @@ if($info==false){      //如果图书书架信息表中为空值，则弹出“�
   <tr>
     <td width="84%">&nbsp;      </td>
 <td width="16%" align="right">
-      <a href="#" onClick="window.open('bookcase_add.php','','width=350,height=200')">添加书架信息&nbsp;</a> </td>	  
+      <a href="#" onClick="window.open('bookcase_add.php','','width=500,height=300,top=200,left=300')">添加书架信息&nbsp;</a> </td>	  
   </tr>
 </table>  
   <table width="91%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#D2E3E6" bordercolorlight="#FFFFFF">
@@ -65,7 +69,9 @@ if($info==false){      //如果图书书架信息表中为空值，则弹出“�
 </td>
   </tr>
 </table>
+<!--
 <?php include("copyright.php");?>
+-->
 </td>
   </tr>
 </table>

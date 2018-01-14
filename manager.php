@@ -1,23 +1,27 @@
-﻿<?php session_start();?>
+﻿<?php 
+include ("check_login.php"); 
+session_start();?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <link href="CSS/style.css" rel="stylesheet">
 </head>
 <body>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder">
+<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
   <tr>
     <td>
-	<?php include("navigation.php");?>
+<!--
+  <?php include("navigation.php");?>
+-->
 	</td>
 	</tr>
 	<td>
 	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td valign="top" bgcolor="#FFFFFF"><table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
+    <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
   <tr>
     <td height="510" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td height="22" valign="top" class="word_orange">当前位置：系统设置 &gt; 管理员设置 &gt;&gt;&gt;</td>
+        <td height="22" valign="top" class="word_orange">当前位置：系统管理 &gt; 管理员设置 &gt;&gt;&gt;</td>
       </tr>
       <tr>
         <td align="center" valign="top">
@@ -35,7 +39,7 @@ if($info==false){
           <table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>
-      <a href="#" onClick="window.open('manager_add.php','','width=292,height=175')">添加管理员信息</a> </td>
+      <a href="#" onClick="window.open('manager_add.php','','width=500,height=300,top=200,left=300')">添加管理员信息</a> </td>
   </tr>
 </table>
  <?php
@@ -45,7 +49,7 @@ if($info==false){
   <tr>
     <td width="84%">&nbsp;      </td>
 <td width="16%">
-      <a href="#" onClick="window.open('manager_add.php','','width=292,height=175')">添加管理员信息</a> </td>	  
+      <a href="#" onClick="window.open('manager_add.php','','width=500,height=300,top=200,left=300')">添加管理员信息</a> </td>	  
   </tr>
 </table>  
   <table width="91%"  border="1" cellpadding="0" cellspacing="0" bordercolor="#FFFFFF" bordercolordark="#D2E3E6" bordercolorlight="#FFFFFF">
@@ -67,7 +71,7 @@ if($info==false){
     <td align="center"><input name="checkbox" type="checkbox" class="noborder" value="checkbox" disabled <?php if($info[bookset]==1){echo("checked");}?>></td>
     <td align="center"><input name="checkbox" type="checkbox" class="noborder" value="checkbox" disabled <?php if($info[borrowback]==1){echo("checked");}?>></td>
     <td align="center"><input name="checkbox" type="checkbox" class="noborder" value="checkbox" disabled <?php if($info[sysquery]==1){echo("checked");}?>></td>
-    <td align="center"><a href="#" onClick="window.open('manager_modify.php?id=<?php echo $info[id]; ?>','','width=292,height=175')">权限设置</a></td>
+    <td align="center"><a href="#" onClick="window.open('manager_modify.php?id=<?php echo $info[id]; ?>','','width=500,height=300,top=200,left=300')">权限设置</a></td>
     <td align="center"><a href="manager_del.php?id=<?php echo $info[id];?>">删除</a></td>
   </tr>
 <?php
@@ -79,7 +83,10 @@ if($info==false){
     </table>
 </td>
   </tr>
-</table><?php include("copyright.php");?></td>
+</table>
+<!--
+<?php include("copyright.php");?>
+-->
   </tr>
 </table>
 </td>

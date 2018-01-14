@@ -1,20 +1,24 @@
-﻿<?php session_start();?>
+﻿<?php 
+include ("check_login.php"); 
+session_start();?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <link href="CSS/style.css" rel="stylesheet">
 </head>
 <body>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder">
+<table width="776" border="0" align="center" cellpadding="0" cellspacing="0"  class="tableBorder_gray">
   <tr>
     <td>
-	<?php include("navigation.php");?>
+<!--
+  <?php include("navigation.php");?>
+-->
 	</td>
   </tr>
-	<td bgcolor="#FFFFFF">
-	<table width="100%"  border="0" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF">
+	<td>
+	<table width="100%"  border="0" cellspacing="0" cellpadding="0" >
   <tr>
-    <td valign="top" bgcolor="#FFFFFF"><table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
+    <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
   <tr>
     <td height="510" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
       <tr>
@@ -66,7 +70,10 @@
     </table>
 </td>
   </tr>
-</table><?php include("copyright.php");?></td>
+</table>
+<!--
+<?php include("copyright.php");?>
+-->
   </tr>
 </table>
 </td>

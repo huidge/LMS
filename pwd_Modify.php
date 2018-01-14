@@ -1,5 +1,7 @@
-﻿<?php session_start();?>
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<?php 
+include ("check_login.php"); 
+session_start();?>
+<html>
 <head>
 <title>图书馆管理系统</title>
 <link href="CSS/style.css" rel="stylesheet">
@@ -27,16 +29,18 @@ function checkForm(form){
 }
 </script>
 <body>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder">
+<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
   <tr>
     <td>
-	<?php include("navigation.php");?>
+<!--
+  <?php include("navigation.php");?>
+-->
 	</td>
 	</tr>
 	<td>
 	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td valign="top" bgcolor="#FFFFFF"><table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
+    <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
   <tr>
     <td height="510" valign="top" style="padding:5px;"><table width="98%" height="487"  border="0" cellpadding="0" cellspacing="0">
       <tr>
@@ -84,7 +88,10 @@ $info3=mysql_fetch_array($query3);
     </table>
 </td>
   </tr>
-</table><?php include("copyright.php");?></td>
+</table>
+<!--
+<?php include("copyright.php");?>
+-->
   </tr>
 </table>
 </td>

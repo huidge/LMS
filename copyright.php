@@ -7,7 +7,7 @@
       </tr>
       <tr>
         <td width="124">&nbsp;</td>
-        <td height="20" align="center">CopyRight©  <?php echo date("Y")?> lib.guozhihui.top&nbsp;图书管理系统</td>
+        <td height="20" align="center">CopyRight©  <?php echo date("Y");?> lib.guozhihui.top&nbsp;图书管理系统</td>
         <td width="141">&nbsp;</td>
       </tr>
       <tr>

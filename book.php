@@ -1,24 +1,29 @@
-﻿<?php session_start();?>
+﻿<?php 
+include ("check_login.php"); 
+session_start();
+?>
 <html>
 <head>
 <title>图书馆管理系统</title>
 <link href="CSS/style.css" rel="stylesheet">
 </head>
 <body>
-<table width="778" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder">
+<table width="778" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
+<!--
   <tr>
     <td>
     <?php include("navigation.php");?>
 	</td>
 	</tr>
+-->
 	<td>
 	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td valign="top" bgcolor="#FFFFFF"><table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
+    <table width="99%" height="510"  border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" class="tableBorder_gray">
   <tr>
     <td height="510" valign="top" style="padding:5px;"><table width="98%"  border="0" cellpadding="0" cellspacing="0">
       <tr>
-        <td height="22" valign="top" class="word_orange">当前位置：图书管理 &gt; 图书档案管理 &gt;&gt;&gt;</td>
+        <td height="22" valign="top" class="word_orange">当前位置：图书管理 &gt; 图书档案信息 &gt;&gt;&gt;</td>
       </tr>
       <tr>
         <td align="center" valign="top">
@@ -79,7 +84,9 @@
     </table>
 </td>
   </tr>
-</table><?php include("copyright.php");?></td>
+<!--
+</table><?php include("copyright.php");?>
+-->
   </tr>
 </table>
 </td>

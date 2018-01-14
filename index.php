@@ -3,15 +3,18 @@ include ("check_login.php");
 include("conn/conn.php");
 ?>
 <html>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <head>
 <title>学校图书馆管理系统</title>
 <link href="CSS/style.css" rel="stylesheet">
 </head>
-<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder">
+<table width="776" border="0" align="center" cellpadding="0" cellspacing="0" class="tableBorder_gray">
+<!--
   <tr>
     <td><?php include("navigation.php"); ?></td>
   </tr>
+-->
 	<td bgcolor="#FFFFFF">
 	<table width="100%"  border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -71,7 +74,9 @@ include("conn/conn.php");
 </table></td>
   </tr>
 </table>
+<!--
 <?php include("copyright.php"); ?></td>
+-->
   </tr>
 </table>
 </html>
